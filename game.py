@@ -32,7 +32,7 @@ SHAPES = [
 class Block():
     def __init__(self, grid):
         self.grid = grid
-        self.color = randint(1, 7)
+        self.colour = randint(1, 7)
         self.shape = choice(SHAPES)
         self.i = 0
         self.j = 5
@@ -43,7 +43,7 @@ class Block():
         for i in range(self.height):
             for j in range(self.width):
                 if self.shape[i][j] == 1:
-                    self.grid[self.i + i][self.j + j] = self.color
+                    self.grid[self.i + i][self.j + j] = self.colour
 
     def erase(self):
         for i in range(self.height):
@@ -125,12 +125,12 @@ class Block():
 gz = 32
 WIDTH = 12
 HEIGHT = 24
-COLORS = ("black", "red", "orange", "yellow", "green", "cyan", "blue", "purple")
+COLOURS = ("black", "red", "orange", "yellow", "green", "cyan", "blue", "purple")
 
 grid = [[0 for col in range(WIDTH)] for row in range(HEIGHT)]
 
 title("Tetris")
-bgcolor("lightgreen")
+bgcolour("lightgreen")
 shapesize(1.5)
 tracer(False)
 speed(0)
@@ -155,7 +155,7 @@ block_pen.ht()
 
 def draw_next_block(block):
     block_pen.clear()
-    block_pen.color(COLORS[block.color])
+    block_pen.colour(COLO|URS[block.colour])
     for i in range(len(block.shape)):
         for j in range(len(block.shape[0])):
             if block.shape[i][j] == 1:
@@ -168,7 +168,7 @@ def draw_grid():
     for row in range(len(grid)):
         for col in range(len(grid[row])):
             goto(-WIDTH / 2 * gz + col * gz, HEIGHT / 2 * gz - row * gz - 20)
-            color(COLORS[grid[row][col]])
+            colour(COLOURS[grid[row][col]])
             stamp()
 
 
@@ -230,7 +230,7 @@ def run():
             b.fill()
             draw_grid()
             goto(0, 0)
-            color("white")
+            colour("white")
             write("GAME OVER", font=("", 50, ""), align="center")
             return
         check_grid()
